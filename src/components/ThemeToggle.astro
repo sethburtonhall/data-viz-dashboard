@@ -1,0 +1,36 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<theme-toggle>
+  <button
+    id="darkModeToggle"
+    class="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-full"
+  >
+    <span class="sr-only">Dark theme</span>
+    <span class="dark:inline hidden"><Icon icon="sun" /></span>
+    <span class="dark:hidden"><Icon icon="moonStars" /></span>
+  </button>
+</theme-toggle>
+
+<script>
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const html = document.documentElement;
+
+  darkModeToggle?.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    localStorage.setItem(
+      "darkMode",
+      html.classList.contains("dark") ? "true" : "false",
+    );
+  });
+
+  // Check for saved dark mode preference
+  if (
+    localStorage.getItem("darkMode") === "true" ||
+    (!localStorage.getItem("darkMode") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    html.classList.add("dark");
+  }
+</script>

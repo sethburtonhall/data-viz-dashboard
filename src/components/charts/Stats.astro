@@ -1,0 +1,55 @@
+---
+import Icon from "@/components/Icon.astro";
+import type { iconPaths } from "@/components/IconPaths";
+
+interface Props {
+  class: string;
+  icon: keyof typeof iconPaths;
+  amount: string;
+  type: string;
+  percent: string;
+  increase?: boolean;
+  decrease?: boolean;
+}
+
+const {
+  class: className,
+  icon,
+  amount,
+  type,
+  percent,
+  increase,
+  decrease,
+} = Astro.props;
+
+const formattedType = type.charAt(0).toUpperCase() + type.slice(1);
+---
+
+<div class:list={[className]}>
+  <div class="bg-background px-8 py-6 shadow-lg">
+    <div class="flex flex-col gap-6">
+      <div
+        class="w-max text-foreground dark:bg-gray-800 p-2 bg-gray-200 rounded-full"
+      >
+        <Icon icon={icon} size="1.5em" />
+      </div>
+      <div class="flex items-end justify-between gap-2">
+        <div>
+          <div class="text-2xl">{`${amount}K`}</div>
+          <div class="text-sm text-gray-600">Total {formattedType}</div>
+        </div>
+        <div class="flex items-center gap-1">
+          <div class:list={[increase ? "text-green-500" : "text-red-500"]}>
+            {`${percent}%`}
+          </div>
+          <div class="text-green-500">
+            {increase && <Icon icon="trendUp" size="1em" />}
+          </div>
+          <div class="text-red-500">
+            {decrease && <Icon icon="trendDown" size="1em" />}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

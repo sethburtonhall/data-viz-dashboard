@@ -1,16 +1,53 @@
 ---
-
+import Layout from "@/layouts/Layout.astro";
+import Stats from "@/components/charts/Stats.astro";
+import AreaChart from "@/components/charts/AreaChart";
+import BarChart from "@/components/charts/BarChart";
+import PieChart from "@/components/charts/PieChart";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="DataViz">
+  <div class="md:grid-cols-2 lg:grid-cols-4 grid grid-cols-1 gap-6">
+    <Stats
+      class="lg:col-span-2 xl:col-span-1 col-span-2"
+      icon="eye"
+      amount="$36.54"
+      type="views"
+      percent="0.43"
+      increase
+    />
+    <Stats
+      class="lg:col-span-2 xl:col-span-1 col-span-2"
+      icon="cart"
+      amount="$42.4"
+      type="profit"
+      percent="0.24"
+      increase
+    />
+    <Stats
+      class="lg:col-span-2 xl:col-span-1 col-span-2"
+      icon="product"
+      amount="2.8"
+      type="product"
+      percent="0.52"
+      increase
+    />
+    <Stats
+      class="lg:col-span-2 xl:col-span-1 col-span-2"
+      icon="users"
+      amount="4.57"
+      type="users"
+      percent="0.41"
+      decrease
+    />
+    <div class="md:col-span-2 xl:col-span-3 col-span-2">
+      <AreaChart client:load />
+    </div>
+    <div class="md:col-span-2 xl:col-span-1 col-span-2">
+      <PieChart client:load />
+    </div>
+    <div class="md:col-span-2 lg:col-span-4 xl:col-span-2 col-span-2">
+      <BarChart client:load />
+    </div>
+  </div>
+</Layout>
