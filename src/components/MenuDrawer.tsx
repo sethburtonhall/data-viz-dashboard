@@ -15,9 +15,9 @@ export default function MenuDrawer(props: MenuDrawerProps) {
           <Menu size={24} />
         </button>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-gray-800">
+      <SheetContent side="left" className="bg-background">
         <div className="flex items-center border-b px-4 py-[18px] leading-none dark:border-gray-700">
-          <div className="dark:text-white flex items-center gap-2 text-2xl font-bold text-gray-800">
+          <div className="text-foreground flex items-center gap-2 text-2xl font-bold">
             {props.logo}
             {props.title}
           </div>
