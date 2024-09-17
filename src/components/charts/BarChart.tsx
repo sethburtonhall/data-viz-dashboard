@@ -41,7 +41,7 @@ const chartConfig = {
 
 export default function BarChart() {
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex h-full flex-col">
       <CardHeader>
         <CardTitle>Visitors by Device</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
@@ -68,12 +68,12 @@ export default function BarChart() {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className="flex items-start w-full gap-2 text-sm">
+        <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="w-4 h-4" />
+              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
-            <div className="text-muted-foreground flex items-center gap-2 leading-none">
+            <div className="flex items-center gap-2 leading-none text-muted-foreground">
               January - June 2024
             </div>
           </div>

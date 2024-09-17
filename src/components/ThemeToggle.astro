@@ -5,11 +5,11 @@ import Icon from "./Icon.astro";
 <theme-toggle>
   <button
     id="darkModeToggle"
-    class="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-full"
+    class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-800"
   >
     <span class="sr-only">Dark theme</span>
-    <span class="dark:inline hidden"><Icon icon="sun" /></span>
-    <span class="dark:hidden"><Icon icon="moonStars" /></span>
+    <span class="hidden dark:inline"><Icon icon="sun" size="1.4em" /></span>
+    <span class="dark:hidden"><Icon icon="moonStars" size="1.4em" /></span>
   </button>
 </theme-toggle>
 

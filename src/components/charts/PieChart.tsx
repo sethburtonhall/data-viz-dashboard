@@ -61,7 +61,7 @@ export default function PieChart() {
   }, []);
 
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex h-full flex-col">
       <CardHeader>
         <CardTitle>Visitors by Browser</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
@@ -118,9 +118,9 @@ export default function PieChart() {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="w-4 h-4" />
+          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="text-muted-foreground leading-none">
+        <div className="leading-none text-muted-foreground">
           Showing total visitors for the last 6 months
         </div>
       </CardFooter>

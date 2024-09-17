@@ -23,30 +23,28 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body class="dark:bg-gray-900 dark:text-gray-200 text-gray-800 bg-gray-100">
+  <body class="bg-gray-100 text-foreground dark:bg-gray-900">
     <div class="flex h-screen">
       <!-- Sidebar -->
-      <aside
-        class="dark:bg-gray-800 md:flex fixed flex-col hidden w-64 h-screen bg-white"
-      >
+      <aside class="fixed hidden h-screen w-64 flex-col bg-background md:flex">
         <div
           class="flex items-center border-b px-4 py-[18px] leading-none dark:border-gray-700"
         >
           <div
-            class="dark:text-white flex items-center gap-2 text-2xl font-bold text-gray-800"
+            class="flex items-center gap-2 text-2xl font-bold text-foreground"
           >
             <Icon icon="dataVizLogo" size="1.5em" />
             {title}
           </div>
         </div>
         <nav class="flex-grow">
-          <ul class="py-4 space-y-2">
+          <ul class="space-y-2 py-4">
             {
               navItems.map((item) => (
                 <li>
                   <a
                     href={item.href}
-                    class="hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 flex items-center gap-2 px-4 py-2 text-gray-700"
+                    class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800"
                   >
                     <Icon icon={item.icon} size="1.5em" />
                     {item.title}
@@ -59,10 +57,10 @@ const { title } = Astro.props;
       </aside>
 
       <!-- Main Content -->
-      <div class="md:ml-64 flex flex-col flex-1">
+      <div class="flex flex-1 flex-col md:ml-64">
         <!-- Top Bar -->
         <header
-          class="dark:border-gray-700 dark:bg-gray-800 flex items-center justify-between px-6 py-4 bg-white border-b"
+          class="flex items-center justify-between border-b bg-background px-6 py-4 dark:border-gray-700"
         >
           <div class="md:hidden">
             <MenuDrawer client:load title={title}>
@@ -72,7 +70,7 @@ const { title } = Astro.props;
                   <li slot="navItems">
                     <a
                       href={item.href}
-                      class="text-foreground hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center gap-2 px-4 py-2"
+                      class="flex items-center gap-2 px-4 py-2 text-foreground hover:bg-gray-200 dark:hover:bg-gray-800"
                     >
                       <Icon icon={item.icon} size="1.5em" />
                       {item.title}
@@ -83,13 +81,13 @@ const { title } = Astro.props;
             </MenuDrawer>
           </div>
 
-          <div class="flex items-center gap-4 ml-auto">
+          <div class="ml-auto flex items-center gap-4">
             <ThemeToggle />
 
             <!-- Notifications Dropdown -->
             <div class="relative" x-data="{ openNotifications: false }" x-cloak>
               <button
-                class="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-full"
+                class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-800"
                 x-on:click="openNotifications = ! openNotifications"
               >
                 <Icon icon="bell" size="1.5em" />
@@ -97,17 +95,17 @@ const { title } = Astro.props;
               <div
                 x-show="openNotifications"
                 x-transition
-                class="-right-1/2 w-72 dark:bg-gray-800 absolute py-1 mt-2 bg-white rounded-md shadow-lg"
+                class="absolute -right-1/2 mt-2 w-72 rounded-md bg-white py-1 shadow-lg dark:bg-gray-800"
               >
                 {
                   notifications.map((notification) => (
                     <a
                       href="#"
                       @click.away="openNotifications = false"
-                      class="hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 block px-4 py-2 text-sm text-gray-700"
+                      class="block px-4 py-2 text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <p class="font-medium">{notification.message}</p>
-                      <p class="dark:text-gray-400 text-xs text-gray-500">
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
                         {notification.time}
                       </p>
                     </a>
@@ -119,7 +117,7 @@ const { title } = Astro.props;
             <!-- Chat Dropdown -->
             <div class="relative" x-data="{ openChat: false }">
               <button
-                class="hover:bg-gray-200 dark:hover:bg-gray-700 p-2 rounded-full"
+                class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-800"
                 x-on:click="openChat = ! openChat"
               >
                 <Icon icon="chat" size="1.5em" />
@@ -127,18 +125,18 @@ const { title } = Astro.props;
               <div
                 x-show="openChat"
                 x-transition
-                class="w-72 dark:bg-gray-800 absolute right-0 py-1 mt-2 bg-white rounded-md shadow-lg"
+                class="absolute right-0 mt-2 w-72 rounded-md bg-white py-1 shadow-lg dark:bg-gray-800"
               >
                 {
                   messages.map((message) => (
                     <a
                       href="#"
                       @click.away="openChat = false"
-                      class="hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 block px-4 py-2 text-sm text-gray-700"
+                      class="block px-4 py-2 text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <p class="font-medium">{message.user}</p>
                       <p class="text-xs">{message.message}</p>
-                      <p class="dark:text-gray-400 text-xs text-gray-500">
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
                         {message.time}
                       </p>
                     </a>
@@ -153,13 +151,13 @@ const { title } = Astro.props;
                 class="flex items-center gap-2"
                 x-on:click="openUserMenu = ! openUserMenu"
               >
-                <span class="md:flex hidden font-medium">Seth Hall</span>
+                <span class="hidden font-medium md:flex">Seth Hall</span>
                 <div class="size-10">
                   <Picture
                     src={avatar}
                     alt="User Avatar"
                     loading="eager"
-                    class="object-cover w-full rounded-full"
+                    class="w-full rounded-full object-cover"
                   />
                 </div>
                 <div :class="openUserMenu ? 'rotate-180' : 'rotate-0'">
@@ -169,7 +167,7 @@ const { title } = Astro.props;
               <div
                 x-show="openUserMenu"
                 x-transition
-                class="dark:bg-gray-800 absolute right-0 w-48 py-1 mt-2 bg-white rounded-md shadow-lg"
+                class="absolute right-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg dark:bg-gray-800"
               >
                 {
                   userMenu.map((item, index) => (
@@ -177,13 +175,13 @@ const { title } = Astro.props;
                       <a
                         href={item.href}
                         @click.away="openUserMenu = false"
-                        class="hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 flex items-center gap-4 px-4 py-2 text-sm text-gray-700"
+                        class="flex items-center gap-4 px-4 py-2 text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
                         <Icon icon={item.icon} size="1.5em" />
                         {item.title}
                       </a>
                       {index === userMenu.length - 2 && (
-                        <hr class="dark:border-gray-700 my-2 border-t" />
+                        <hr class="my-2 border-t dark:border-gray-700" />
                       )}
                     </div>
                   ))
@@ -194,7 +192,7 @@ const { title } = Astro.props;
         </header>
 
         <!-- Page Content -->
-        <main class="max-w-none container p-6 overflow-auto">
+        <main class="container max-w-none overflow-auto p-6">
           <slot />
         </main>
       </div>
