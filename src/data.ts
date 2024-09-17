@@ -50,7 +50,7 @@ export const userMenu: {
   icon: keyof typeof iconPaths;
   href: string;
 }[] = [
-  { title: "Profile", icon: "user", href: "/profile" },
+  { title: "My Profile", icon: "user", href: "/profile" },
   { title: "Settings", icon: "cog", href: "/settings" },
   { title: "Log out", icon: "logout", href: "/logout" },
 ];

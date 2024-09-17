@@ -1,13 +1,14 @@
 ---
 import "@/styles/globals.css";
 
-import { Picture } from "astro:assets";
+import { Toaster } from "@/components/ui/toaster";
 
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import MenuDrawer from "@/components/MenuDrawer";
 import Icon from "@/components/Icon.astro";
 import { navItems, notifications, messages, userMenu } from "@/data";
 
+import { Picture } from "astro:assets";
 import avatar from "@/public/mtn_avatar.png";
 
 const { title } = Astro.props;
@@ -30,12 +31,13 @@ const { title } = Astro.props;
         <div
           class="flex items-center border-b px-4 py-[18px] leading-none dark:border-gray-700"
         >
-          <div
+          <a
+            href="/"
             class="flex items-center gap-2 text-2xl font-bold text-foreground"
           >
             <Icon icon="dataVizLogo" size="1.5em" />
             {title}
-          </div>
+          </a>
         </div>
         <nav class="flex-grow">
           <ul class="space-y-2 py-4">
@@ -195,6 +197,7 @@ const { title } = Astro.props;
         <main class="container max-w-none overflow-auto p-6">
           <slot />
         </main>
+        <Toaster client:load />
       </div>
     </div>
   </body>
